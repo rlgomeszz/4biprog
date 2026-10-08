@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Portal Escolar Acadêmico</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<div id="toast" class="toast"></div>
+<section id="auth" class="auth-screen">
+  <div class="auth-card">
+    <div class="brand"><div class="logo">PE</div><div><b>Portal Escolar</b><small>Área Acadêmica</small></div></div>
+    <div class="role-tabs">
+      <button class="role active" data-role="aluno">🎓 Aluno</button>
+      <button class="role" data-role="professor">👨‍🏫 Professor</button>
+    </div>
+    <div class="login-copy">
+      <span id="roleIcon">🎓</span><h1 id="loginTitle">Acesso do aluno</h1>
+      <p id="loginText">Entre usando exclusivamente seu e-mail discente.</p>
+    </div>
+    <form id="loginForm">
+      <input type="hidden" id="tipo" value="aluno">
+      <label>E-mail <span id="emailHint">discente</span>
+        <input id="loginEmail" type="email" required autocomplete="email" placeholder="seu.email@escola.com">
+      </label>
+      <label>Senha
+        <input id="loginSenha" type="password" required autocomplete="current-password" placeholder="••••••••">
+      </label>
+      <button class="primary full">Entrar no portal</button>
+    </form>
+    <div class="auth-links"><button id="registerLink" class="link-btn">Cadastrar novo aluno</button><button id="forgotLink" class="link-btn">Esqueci minha senha</button></div>
+    <div class="demo"><b>Demo:</b> aluno@escola.com / 123456 &nbsp;|&nbsp; professor@escola.com / 123456</div>
+    <div class="login-note">O sistema identifica o perfil pelo tipo de acesso. Alunos não têm acesso às funções de lançamento de notas e frequência.</div>
+  </div>
+</section>
+
+<section id="registerModal" class="modal hidden"><div class="modal-card"><button class="modal-close" data-close="registerModal">×</button><h2>Cadastrar aluno</h2><p>Crie um acesso individual com e-mail e senha.</p><form id="registerForm"><label>Nome completo<input name="nome" required></label><label>Matrícula<input name="matricula" required></label><label>E-mail discente<input name="email" type="email" required></label><div class="two"><label>Curso<input name="curso" value="Ensino Médio"></label><label>Turma<input name="turma" placeholder="Ex.: 2°C"></label></div><label>Senha<input name="senha" type="password" minlength="6" required></label><label>Confirmar senha<input name="confirmarSenha" type="password" minlength="6" required></label><button class="primary full">Cadastrar aluno</button></form></div></section>
+
+<section id="registerProfessorModal" class="modal hidden"><div class="modal-card"><button class="modal-close" data-close="registerProfessorModal">×</button><h2>Cadastrar professor</h2><p>Crie um acesso exclusivo para este professor. O e-mail e a senha serão individuais.</p><form id="registerProfessorForm"><label>Nome completo<input name="nome" required autocomplete="name"></label><label>Matrícula funcional<input name="matricula" required placeholder="Ex.: PROF003"></label><label>E-mail institucional<input name="email" type="email" required placeholder="professor@escola.com" autocomplete="email"></label><label>Telefone <small>(opcional)</small><input name="telefone" placeholder="(00) 00000-0000"></label><label>Disciplina que leciona<select name="disciplina" required><option value="">Selecione a disciplina</option><option>Programação</option><option>Desenvolvimento Web</option><option>Matemática</option><option>Português</option><option>Inglês</option><option>Biologia</option><option>Química</option><option>Física</option><option>História</option><option>Geografia</option><option>Educação Física</option><option>Outra</option></select></label><label>Senha<input name="senha" type="password" minlength="6" required autocomplete="new-password"></label><label>Confirmar senha<input name="confirmarSenha" type="password" minlength="6" required autocomplete="new-password"></label><button class="primary full">Cadastrar professor</button></form></div></section>
+
+<section id="forgotModal" class="modal hidden"><div class="modal-card"><button class="modal-close" data-close="forgotModal">×</button><h2>Recuperar senha</h2><p>Disponível para acesso docente. Informe o e-mail do professor.</p><form id="forgotForm"><label>E-mail docente<input name="email" type="email" required placeholder="professor@escola.com"></label><button class="primary full">Enviar recuperação por e-mail</button></form></div></section>
+
+<section id="resetModal" class="modal hidden"><div class="modal-card"><h2>Nova senha</h2><p>Defina uma nova senha para o acesso docente.</p><form id="resetForm"><input type="hidden" name="token" id="resetToken"><label>Nova senha<input name="senha" type="password" minlength="6" required></label><button class="primary full">Salvar nova senha</button></form></div></section>
+
+<section id="app" class="hidden">
+  <aside>
+    <div class="brand side"><div class="logo">PE</div><div><b>Portal Escolar</b><small id="sideRole">Área do aluno</small></div></div>
+    <nav id="nav"></nav>
+    <button id="logout" class="logout">↪ Sair</button>
+  </aside>
+  <main>
+    <header><div><small id="systemLabel">PORTAL ACADÊMICO</small><h2 id="pageTitle">Visão geral</h2></div>
+      <div class="user"><span id="userName">Usuário</span><div class="avatar" id="avatar">U</div></div>
+    </header>
+    <div id="content" class="content"></div>
+  </main>
+</section>
+<script src="app.js"></script>
+</body></html>
